@@ -7,7 +7,15 @@ find_package(Threads)
 include_directories(perfetto/sdk)
 add_library(perfetto STATIC perfetto/sdk/perfetto.cc)
 
-# Link the library to the main executable.
+# Link the library to the main executables.
 add_executable(example example.cc example_tracing.cc)
+add_executable(example_system_wide example_system_wide.cc example_tracing.cc)
 
 target_link_libraries(example perfetto ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(example_system_wide perfetto ${CMAKE_THREAD_LIBS_INIT})
+
+# On Android we also need the logging library.
+if (ANDROID)
+  target_link_libraries(example log)
+  target_link_libraries(example_system_wide log)
+endif (ANDROID)

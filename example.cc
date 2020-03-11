@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+// This example demonstrates in-process tracing with Perfetto.
+
 #include "example_tracing.h"
 
 #include <chrono>
