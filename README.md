@@ -35,4 +35,7 @@ $ ./example
 ```
 
 It will create a trace file in `example.pftrace`, which can be directly
-opened in the [Perfetto UI](https://ui.perfetto.dev).
+opened in the [Perfetto UI](https://ui.perfetto.dev). The result should look like this:
+
+![Example trace loaded in the Perfetto UI](
+  example.png "Example trace loaded in the Perfetto UI")
