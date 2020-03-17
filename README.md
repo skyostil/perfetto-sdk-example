@@ -10,7 +10,7 @@ Dependencies:
 - [CMake](https://cmake.org/)
 - C++11
 
-## Building and running
+## Building
 
 First, check out the repository (including submodules):
 
@@ -28,14 +28,17 @@ $ cmake ..
 $ cmake --build .
 ```
 
-Finally, you can run the example with:
+## Track event example
+
+The basic example shows how to instrument an app with track events. Run it with:
 
 ```sh
 $ ./example
 ```
 
-It will create a trace file in `example.pftrace`, which can be directly
-opened in the [Perfetto UI](https://ui.perfetto.dev). The result should look like this:
+The program will create a trace file in `example.pftrace`, which can be
+directly opened in the [Perfetto UI](https://ui.perfetto.dev). The result
+should look like this:
 
 ![Example trace loaded in the Perfetto UI](
   example.png "Example trace loaded in the Perfetto UI")
@@ -95,3 +98,31 @@ information such as CPU frequencies and kernel scheduler information.
 > the [Perfetto UI](https://ui.perfetto.dev/#!/record) and replace
 > `system_wide_trace_cfg.pbtxt` with the [generated config](
 > https://ui.perfetto.dev/#!/record?p=instructions).
+
+## Custom data source example
+
+The final example shows how to use an application defined data source to emit
+custom, strongly typed data into a trace. Run it with:
+
+```sh
+$ ./example_custom_data_source
+```
+
+The program generates a trace file in `example_custom_data_source.pftrace`,
+which we can examine using Perfetto's `trace_to_text` tool to show the trace
+packet written by the custom data source:
+
+```json
+$ trace_to_text text example_custom_data_source.pftrace
+...
+packet {
+  trusted_uid: 0
+  timestamp: 42
+  trusted_packet_sequence_id: 2
+  previous_packet_dropped: true
+  for_testing {
+    str: "Hello world!"
+  }
+}
+...
+```
