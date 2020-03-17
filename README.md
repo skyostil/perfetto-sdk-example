@@ -112,7 +112,7 @@ The program generates a trace file in `example_custom_data_source.pftrace`,
 which we can examine using Perfetto's `trace_to_text` tool to show the trace
 packet written by the custom data source:
 
-```json
+```sh
 $ trace_to_text text example_custom_data_source.pftrace
 ...
 packet {
