@@ -35,6 +35,9 @@ class CustomDataSource : public perfetto::DataSource<CustomDataSource> {
   void OnStop(const StopArgs&) override {}
 };
 
+PERFETTO_DECLARE_DATA_SOURCE_STATIC_MEMBERS(CustomDataSource);
+PERFETTO_DEFINE_DATA_SOURCE_STATIC_MEMBERS(CustomDataSource);
+
 void InitializePerfetto() {
   perfetto::TracingInitArgs args;
   // The backends determine where trace events are recorded. For this example we
