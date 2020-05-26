@@ -20,10 +20,14 @@
 #include <perfetto.h>
 
 // The set of track event categories that the example is using.
-// TODO(skyostil): Roll Perfetto and update to new syntax.
 PERFETTO_DEFINE_CATEGORIES(
-    PERFETTO_CATEGORY(rendering),
-    PERFETTO_CATEGORY(network),
-    PERFETTO_CATEGORY(audio));
+    perfetto::Category("rendering")
+        .SetDescription("Rendering and graphics events"),
+    perfetto::Category("network.debug")
+        .SetTags("debug")
+        .SetDescription("Verbose network events"),
+    perfetto::Category("audio.latency")
+        .SetTags("verbose")
+        .SetDescription("Detailed audio latency metrics"));
 
 #endif  // EXAMPLE_TRACING_H

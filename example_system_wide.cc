@@ -34,13 +34,10 @@ void InitializePerfetto() {
 }
 
 void WaitForTracingStart() {
-  // TODO(skyostil): Roll perfetto and replace with new API.
   PERFETTO_LOG("Waiting for tracing to start...");
-  bool started = false;
-  do {
-    perfetto::TrackEvent::CallIfEnabled([&](uint32_t) { started = true; });
+  while (!TRACE_EVENT_CATEGORY_ENABLED("rendering")) {
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-  } while (!started);
+  }
   PERFETTO_LOG("Tracing started");
 }
 
