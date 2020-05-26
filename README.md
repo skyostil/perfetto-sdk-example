@@ -30,8 +30,8 @@ $ cmake --build .
 
 ## Track event example
 
-The [basic example](example_tracing.cc) shows how to instrument an app with
-track events. Run it with:
+The [basic example](example.cc) shows how to instrument an app with track
+events. Run it with:
 
 ```sh
 $ ./example
