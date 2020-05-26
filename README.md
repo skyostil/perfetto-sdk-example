@@ -30,7 +30,8 @@ $ cmake --build .
 
 ## Track event example
 
-The basic example shows how to instrument an app with track events. Run it with:
+The [basic example](example_tracing.cc) shows how to instrument an app with
+track events. Run it with:
 
 ```sh
 $ ./example
@@ -47,8 +48,8 @@ should look like this:
 
 While the above example only records events from the program itself, with
 Perfetto it's also possible to combine app trace events with system-wide
-profiling data (e.g., ftrace on Linux). The repository has a second example
-which demonstrates this on Android.
+profiling data (e.g., ftrace on Linux). The repository has a [second
+example](example_system_wide.cc) which demonstrates this on Android.
 
 Requirements:
 - [Android NDK](https://developer.android.com/ndk)
@@ -101,8 +102,9 @@ information such as CPU frequencies and kernel scheduler information.
 
 ## Custom data source example
 
-The final example shows how to use an application defined data source to emit
-custom, strongly typed data into a trace. Run it with:
+The [final example](example_custom_data_source.cc) shows how to use an
+application defined data source to emit custom, strongly typed data into a
+trace. Run it with:
 
 ```sh
 $ ./example_custom_data_source
